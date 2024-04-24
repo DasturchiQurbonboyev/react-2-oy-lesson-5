@@ -23,7 +23,7 @@ const Home = () => {
             <Hero />
             <Products data={data} str={"Best Selling Products"} month={"This Month"} all={4} hoverBtn={false} />
             <Music />
-            <Products data={data} str={"Explore Our Products"} month={"Our Products"} all={8} />
+            <Products data={data} str={"Explore Our Products"} month={"Our Products"} all={8} hoverBtn={true} />
         </div>
     )
 }

@@ -1,9 +1,12 @@
 import React from 'react'
 import { FaRegHeart, FaSearch } from 'react-icons/fa'
 import { GrCart } from 'react-icons/gr'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+    const wishes = useSelector(state => state.wishlist.value).length
+
     return (
         <div className='shadow-md p-4'>
             <div className='kontainer flex justify-between items-center'>
@@ -27,8 +30,14 @@ const Navbar = () => {
                         <input className='bg-transparent outline-none' placeholder="What are you looking for?" type="text" name="" id="" />
                         <FaSearch className='cursor-pointer size-5 ' />
                     </div>
-                    <Link to={"/wishlist"}>
-                        <FaRegHeart className='cursor-pointer size-6' />
+                    <Link className='flex' to={"/wishlist"}>
+                        <span>
+                            <FaRegHeart className='cursor-pointer size-6' />
+                        </span>
+                        {wishes ?
+                            <sup>{wishes}</sup> :
+                            <></>
+                        }
                     </Link>
                     <GrCart className='cursor-pointer size-6' />
                 </div>

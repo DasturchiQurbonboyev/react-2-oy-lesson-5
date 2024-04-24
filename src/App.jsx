@@ -13,7 +13,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className='kr'>
+    <div>
       <Navbar />
       {/* <Link to={"/about"}>About</Link> */}
       <Routes>
