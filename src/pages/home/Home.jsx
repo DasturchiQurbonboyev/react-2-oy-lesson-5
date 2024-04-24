@@ -21,9 +21,9 @@ const Home = () => {
     return (
         <div>
             <Hero />
-            <Products data={data} str={"Best Selling Products"} month={"This Month"} all={4} hoverBtn={false} />
+            <Products data={data} str={"Best Selling Products"} month={"This Month"} all={4} hoverBtn={false} wishlistTitle={true} />
             <Music />
-            <Products data={data} str={"Explore Our Products"} month={"Our Products"} all={8} hoverBtn={true} />
+            <Products data={data} str={"Explore Our Products"} month={"Our Products"} all={8} hoverBtn={true} wishlistTitle={true} />
         </div>
     )
 }
