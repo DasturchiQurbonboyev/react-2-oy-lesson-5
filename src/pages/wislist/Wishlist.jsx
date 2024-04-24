@@ -8,7 +8,7 @@ const Wishlist = () => {
     return (
         <div>
             {!wishes.lenght ?
-                <Products data={wishes} />
+                <Products data={wishes} wishlistTitle={false} str={`Wishlist (${wishes.length})`} />
                 :
                 <h2>Emty </h2>
             }
