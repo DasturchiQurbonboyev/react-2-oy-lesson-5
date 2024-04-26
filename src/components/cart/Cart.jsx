@@ -7,6 +7,11 @@ import { IoMdClose } from 'react-icons/io'
 const Cart = () => {
     const carts = useSelector(state => state.cart.value);
     const dispatch = useDispatch();
+    let sum = carts.reduce((acc, el) => {
+        console.log(el);
+        return acc + el.quantity * el.price
+    }, 0)
+    // console.log(sum);
 
     useEffect(() => {
         scrollTo(0, 0)
@@ -20,7 +25,7 @@ const Cart = () => {
                 <p>{el.title}</p>
                 <div onClick={() => dispatch(remuverFromCart(el))} className='absolute cursor-pointer bg-red-600 -top-[7px] left-[85px] h-6 w-6 flex justify-center items-center rounded-[50%]  '><IoMdClose className='text-white size-[20px]' /></div>
             </div>
-            <p>$ {el.price * el.quantity} </p>
+            <p>$ {el.price} </p>
             <div className='flex items-center gap-3 w-[80px] justify-between  border p-2 rounded-md '>
                 <p>{el.quantity}</p>
                 <div>
@@ -30,7 +35,7 @@ const Cart = () => {
                     </button>
                 </div>
             </div>
-            <p className='text-end'>$ </p>
+            <p className='text-end'>$ {el.price * el.quantity} </p>
         </div>)
     return (
 
@@ -63,15 +68,15 @@ const Cart = () => {
                         <h5>Cart Total</h5>
                         <div className='flex justify-between items-center py-4 border-b-2'>
                             <p>Subtotal:</p>
-                            <p>$1750</p>
+                            <p>{carts.length}</p>
                         </div>
                         <div className='flex justify-between items-center py-4 border-b-2'>
-                            <p>Subtotal:</p>
-                            <p>$1750</p>
+                            <p>Shipping:</p>
+                            <p>Free</p>
                         </div>
                         <div className='flex justify-between items-center py-4'>
-                            <p>Subtotal:</p>
-                            <p>$1750</p>
+                            <p>Total:</p>
+                            <p>$ {sum}</p>
                         </div>
                         <div className='text-center'>
                             <button className='px-12 py-4 border rounded-md  text-white bg-[#DB4444]      ' >Procees to checkout</button>
