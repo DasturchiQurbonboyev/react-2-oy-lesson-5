@@ -7,6 +7,8 @@ import { RiDeleteBin5Line } from 'react-icons/ri'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 import { toggleSingle } from '../../context/singleSlice'
+import { addToCart } from '../../context/cartSlice'
+
 
 
 const Products = ({ data, str, month, all, hoverBtn, wishlistTitle }) => {
@@ -34,8 +36,8 @@ const Products = ({ data, str, month, all, hoverBtn, wishlistTitle }) => {
                     </button>
                 </div>}
             <img className='w-full h-[220px] object-cover   ' src={el.thumbnail} alt="" />
-            <div className={`text-center ${!hoverBtn ? "hidden" : ""} hover: z-0`}>
-                <button className='bg-black text-white w-full py-2'>Add To Cart</button>
+            <div className={`text-center  `}>
+                <button onClick={() => dispatch(addToCart(el))} className='bg-black text-white w-full py-2'>Add To Cart</button>
             </div>
         </div>
         <div>
