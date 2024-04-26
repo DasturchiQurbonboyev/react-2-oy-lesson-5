@@ -7,6 +7,7 @@ export const wishlistSlice = createSlice({
     },
     reducers: {
         toggleWishes(state, { payload }) {
+            // console.log(payload, "cdckhabch");
             let index = state.value.findIndex((el) => el.id === payload.id)
             if (index < 0) {
                 state.value = [...state.value, payload]
