@@ -26,9 +26,7 @@ const Navbar = () => {
                     <li>
                         <Link className='text-[16px]' to={"/sign-up"}>Sign Up</Link>
                     </li>
-                    <li>
-                        <Link className='text-[16px]' to={"/checkOut"}>CheckOut</Link>
-                    </li>
+
                 </ul>
                 <div className='flex gap-6 items-center'>
                     <div className='bg-[#F5F5F5] flex items-center gap-[34px] px-[20px] py-[10px] rounded' >

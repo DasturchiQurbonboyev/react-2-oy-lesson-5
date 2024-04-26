@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import frame from "../../assets/images/checkout/Frame.png"
+import { useSelector } from 'react-redux';
 
 const CheckOut = () => {
+    const carts = useSelector(state => state.cart.value);
+    console.log(carts);
+
+    useEffect(() => {
+        scrollTo(0, 0)
+    }, [])
+
+    let sum = carts.reduce((acc, el) => {
+        console.log(el);
+        return acc + el.quantity * el.price
+    }, 0)
+
+
+    let items = carts?.map((el) =>
+        <div key={el.id} className=' py-[24px]  flex justify-between   items-center    '>
+            <div className='flex items-center gap-3'>
+                <img src={el.thumbnail} className='w-[80px]' alt="" />
+                <p>{el.title}</p>
+            </div>
+            <p>$ {el.price}</p>
+        </div>)
+
+
     return (
         <div className='pt-[120px]'>
             <div className='kontainer'>
@@ -31,28 +55,21 @@ const CheckOut = () => {
                     </div>
                     <div>
                         <div>
-                            <div className=' py-[24px]  flex justify-between   items-center    '>
-                                <div>
-                                    <img src="" alt="" />
-                                    <p>LCD Monitor</p>
-                                </div>
-                                <p>$650</p>
-                            </div>
-                            <div className=' py-[24px]  flex justify-between   items-center    '>
-                                <div>
-                                    <img src="" alt="" />
-                                    <p>LCD Monitor</p>
-                                </div>
-                                <p>$650</p>
-                            </div>
+                            {items}
+
+
                         </div>
                         <div className=' py-[24px] border-b-2 flex justify-between   items-center    '>
                             <p>Subtotal:</p>
-                            <p>$650</p>
+                            <p>$ {sum}</p>
                         </div>
-                        <div className=' py-[24px] border-b-2 mb-8 flex justify-between   items-center    '>
-                            <p>Subtotal:</p>
-                            <p>$650</p>
+                        <div className=' py-[24px] border-b-2  flex justify-between   items-center    '>
+                            <p>Shopping:</p>
+                            <p>Free</p>
+                        </div>
+                        <div className=' py-[24px]   flex justify-between   items-center    '>
+                            <p>Total:</p>
+                            <p>$ {sum}</p>
                         </div>
                         <div className='flex gap-4 justify-between mb-8'>
                             <div className='flex gap-4'>

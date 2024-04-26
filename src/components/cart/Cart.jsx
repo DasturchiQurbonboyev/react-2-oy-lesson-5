@@ -3,6 +3,7 @@ import { FaChevronDown, FaChevronUp, FaRegTrashAlt, FaTrashAlt } from 'react-ico
 import { useDispatch, useSelector } from 'react-redux'
 import { incCart, decCart, remuverFromCart, clearCart } from '../../context/cartSlice'
 import { IoMdClose } from 'react-icons/io'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
     const carts = useSelector(state => state.cart.value);
@@ -79,7 +80,9 @@ const Cart = () => {
                             <p>$ {sum}</p>
                         </div>
                         <div className='text-center'>
-                            <button className='px-12 py-4 border rounded-md  text-white bg-[#DB4444]      ' >Procees to checkout</button>
+                            <Link className='text-[16px]' to={"/checkOut"}>
+                                <button className='px-12 py-4 border rounded-md  text-white bg-[#DB4444]      ' >Procees to checkout</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
