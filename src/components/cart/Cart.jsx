@@ -1,31 +1,44 @@
-import React from 'react'
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import React, { useEffect } from 'react'
+import { FaChevronDown, FaChevronUp, FaRegTrashAlt, FaTrashAlt } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
-import { incCart, decCart } from '../../context/cartSlice'
+import { incCart, decCart, remuverFromCart, clearCart } from '../../context/cartSlice'
+import { IoMdClose } from 'react-icons/io'
 
 const Cart = () => {
     const carts = useSelector(state => state.cart.value);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        scrollTo(0, 0)
+    }, [])
+
+
     let items = carts?.map((el) =>
         <div key={el.id} className='px-[40px] py-[24px] shadow-md grid grid-cols-4   items-center    '>
-            <div className='flex items-center gap-5'>
+            <div className='flex items-center gap-5 relative'>
                 <img src={el.thumbnail} className='w-[100px]' alt="" />
                 <p>{el.title}</p>
+                <div onClick={() => dispatch(remuverFromCart(el))} className='absolute cursor-pointer bg-red-600 -top-[7px] left-[85px] h-6 w-6 flex justify-center items-center rounded-[50%]  '><IoMdClose className='text-white size-[20px]' /></div>
             </div>
             <p>$ {el.price * el.quantity} </p>
             <div className='flex items-center gap-3 w-[80px] justify-between  border p-2 rounded-md '>
                 <p>{el.quantity}</p>
                 <div>
                     <FaChevronUp onClick={() => dispatch(incCart(el))} className='cursor-pointer' />
-                    <FaChevronDown onClick={() => dispatch(decCart(el))} className='cursor-pointer' />
+                    <button disabled={el.quantity <= 1}>
+                        <FaChevronDown onClick={() => dispatch(decCart(el))} className='cursor-pointer' />
+                    </button>
                 </div>
             </div>
             <p className='text-end'>$ </p>
         </div>)
     return (
+
         <div className='pt-[120px]    '>
             <div className='kontainer grid gap-10'>
+                <div className='text-end flex justify-end'>
+                    <button onClick={() => dispatch(clearCart())} className=' flex items-center gap-3'><FaRegTrashAlt className='size-7' /> Clear All </button>
+                </div>
                 <div className='px-[40px] py-[24px] shadow-md grid grid-cols-4   items-center    '>
                     <p>Product</p>
                     <p>Price</p>

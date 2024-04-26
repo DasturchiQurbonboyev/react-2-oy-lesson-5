@@ -37,8 +37,15 @@ export const cartSlice = createSlice({
             localStorage.setItem("cart", JSON.stringify(state.value))
 
         },
-        remuverFromCart() { },
-        clearCart() { }
+        remuverFromCart(state, action) {
+            state.value = state.value.filter((product) => product.id !== action.payload.id)
+            localStorage.setItem("cart", JSON.stringify(state.value))
+
+        },
+        clearCart(state) {
+            state.value = []
+            localStorage.setItem("cart", JSON.stringify(state.value))
+        }
     }
 })
 

@@ -37,7 +37,10 @@ const Products = ({ data, str, month, all, hoverBtn, wishlistTitle }) => {
                 </div>}
             <img className='w-full h-[220px] object-cover   ' src={el.thumbnail} alt="" />
             <div className={`text-center  `}>
-                <button onClick={() => dispatch(addToCart(el))} className='bg-black text-white w-full py-2'>Add To Cart</button>
+                <button onClick={() => {
+                    dispatch(addToCart(el)),
+                        toast.success("Maxsulot Cartga qo'shildi")
+                }} className='bg-black text-white w-full py-2'>Add To Cart</button>
             </div>
         </div>
         <div>

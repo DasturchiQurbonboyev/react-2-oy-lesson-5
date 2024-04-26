@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const wishes = useSelector(state => state.wishlist.value).length
+    const carts = useSelector(state => state.cart.value).length;
+
 
     return (
         <div className='shadow-md p-4 fixed w-full z-20 bg-white'>
@@ -25,9 +27,6 @@ const Navbar = () => {
                         <Link className='text-[16px]' to={"/sign-up"}>Sign Up</Link>
                     </li>
                     <li>
-                        <Link className='text-[16px]' to={"/cart"}>Cart</Link>
-                    </li>
-                    <li>
                         <Link className='text-[16px]' to={"/checkOut"}>CheckOut</Link>
                     </li>
                 </ul>
@@ -45,7 +44,15 @@ const Navbar = () => {
                             <></>
                         }
                     </Link>
-                    <GrCart className='cursor-pointer size-6' />
+                    <Link className='text-[16px] flex' to={"/cart"}>
+                        <span>
+                            <GrCart className='cursor-pointer size-6' />
+                        </span>
+                        {carts ?
+                            <sup className='bg-red-500 w-4 h-4 rounded-[50%] flex justify-center items-center text-white    '>{carts}</sup> :
+                            <></>
+                        }
+                    </Link>
                 </div>
             </div>
         </div>
