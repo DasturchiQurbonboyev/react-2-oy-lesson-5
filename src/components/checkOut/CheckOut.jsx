@@ -64,7 +64,7 @@ const CheckOut = () => {
                             <p>$ {sum}</p>
                         </div>
                         <div className=' py-[24px] border-b-2  flex justify-between   items-center    '>
-                            <p>Shopping:</p>
+                            <p>Shopping :</p>
                             <p>Free</p>
                         </div>
                         <div className=' py-[24px]   flex justify-between   items-center    '>
